@@ -7,19 +7,19 @@ using namespace std;
 int main()
 {
 	int i = 0;
-	int *n = (int *)malloc(sizeof(int));
-	int j = 0, c = 0;
+	int n;
+	int j = 0;
 
 	while (1)
 	{
-		cin >> n[c];
-		if (n[c] == 0)
+		cin >> n;
+		if (n == 0)
 			break;
 
 		int num;
 		for (i = 2; i <= 7; i++)
 		{
-			int r = n[j] / pow(10, i);
+			int r = n / pow(10, i);
 			if (r == 0)
 			{
 				num = i;
@@ -30,9 +30,9 @@ int main()
 		int number[num];
 		for (i = num - 1; i >= 0; i--)
 		{
-			t = n[j] % 10;
+			t = n % 10;
 			number[i] = t;
-			n[j] /= 10;
+			n /= 10;
 		}
 		i = 1;
 		int cu = number[0];
@@ -56,9 +56,6 @@ int main()
 		else if (cu == -1)
 			cout << "No\n";
 		j++;
-
-		c++;
-		n = (int *)realloc(n, (c + 1) * sizeof(int));
 	}
 	return 0;
 }
