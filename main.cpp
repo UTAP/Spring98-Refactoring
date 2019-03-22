@@ -29,6 +29,29 @@ vector<int> split_number_to_digits(int number)
 	return result;
 }
 
+bool is_circular(int n)
+{
+	int len = length(n);
+	vector<int> number = split_number_to_digits(n);
+	int i = 1;
+	int cu = number[0];
+	int temp = cu;
+	number[0] = 0;
+	int t = len;
+	while (t != 0)
+	{
+		i = (cu + i) % len;
+		if (i == 0)
+			i = len;
+		cu = number[i - 1];
+		if (cu == -1)
+			break;
+		number[i - 1] = -1;
+		t--;
+	}
+	return cu == 0;
+}
+
 void print_result(int case_number, bool result)
 {
 	cout << "Case " << case_number << ": ";
@@ -50,25 +73,8 @@ int main()
 		if (n == 0)
 			break;
 
-		int len = length(n);
-		vector<int> number = split_number_to_digits(n);
-		int i = 1;
-		int cu = number[0];
-		int temp = cu;
-		number[0] = 0;
-		int t = len;
-		while (t != 0)
-		{
-			i = (cu + i) % len;
-			if (i == 0)
-				i = len;
-			cu = number[i - 1];
-			if (cu == -1)
-				break;
-			number[i - 1] = -1;
-			t--;
-		}
-		print_result(j + 1, cu == 0);
+		bool result = is_circular(n);
+		print_result(j + 1, result);
 		j++;
 	}
 	return 0;
