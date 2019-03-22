@@ -64,18 +64,14 @@ void print_result(int case_number, bool result)
 
 int main()
 {
-	int j = 0;
-
-	while (1)
+	for (int case_number = 1; ; case_number++)
 	{
 		int n;
 		cin >> n;
 		if (n == 0)
 			break;
-
 		bool result = is_circular(n);
-		print_result(j + 1, result);
-		j++;
+		print_result(case_number, result);
 	}
 	return 0;
 }
