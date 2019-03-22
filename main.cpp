@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
 #include <cmath>
 #include <cstdlib>
 
@@ -27,19 +29,18 @@ int main()
 			break;
 
 		int len = length(n);
-		int t;
-		int number[len];
+		vector<int> number;
 		for (i = len - 1; i >= 0; i--)
 		{
-			t = n % 10;
-			number[i] = t;
+			number.push_back(n % 10);
 			n /= 10;
 		}
+		reverse(number.begin(), number.end());
 		i = 1;
 		int cu = number[0];
 		int temp = cu;
 		number[0] = 0;
-		t = len;
+		int t = len;
 		while (t != 0)
 		{
 			i = (cu + i) % len;
