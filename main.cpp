@@ -35,7 +35,6 @@ bool is_circular(int n)
 	vector<int> number = split_number_to_digits(n);
 	int i = 1;
 	int cu = number[0];
-	int temp = cu;
 	number[0] = 0;
 	int t = len;
 	while (t != 0)
