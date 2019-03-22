@@ -16,6 +16,19 @@ int length(int n)
 	}
 }
 
+vector<int> split_number_to_digits(int number)
+{
+	vector<int> result;
+	while (number)
+	{
+		result.push_back(number % 10);
+		number /= 10;
+	}
+
+	reverse(result.begin(), result.end());
+	return result;
+}
+
 int main()
 {
 	int i = 0;
@@ -29,13 +42,7 @@ int main()
 			break;
 
 		int len = length(n);
-		vector<int> number;
-		for (i = len - 1; i >= 0; i--)
-		{
-			number.push_back(n % 10);
-			n /= 10;
-		}
-		reverse(number.begin(), number.end());
+		vector<int> number = split_number_to_digits(n);
 		i = 1;
 		int cu = number[0];
 		int temp = cu;
