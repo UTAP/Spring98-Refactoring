@@ -4,6 +4,16 @@
 
 using namespace std;
 
+int length(int n)
+{
+	for (int i = 0; ; i++)
+	{
+		int r = n / pow(10, i);
+		if (r == 0)
+			return i;
+	}
+}
+
 int main()
 {
 	int i = 0;
@@ -16,19 +26,10 @@ int main()
 		if (n == 0)
 			break;
 
-		int num;
-		for (i = 2; i <= 7; i++)
-		{
-			int r = n / pow(10, i);
-			if (r == 0)
-			{
-				num = i;
-				break;
-			}
-		}
+		int len = length(n);
 		int t;
-		int number[num];
-		for (i = num - 1; i >= 0; i--)
+		int number[len];
+		for (i = len - 1; i >= 0; i--)
 		{
 			t = n % 10;
 			number[i] = t;
@@ -38,12 +39,12 @@ int main()
 		int cu = number[0];
 		int temp = cu;
 		number[0] = 0;
-		t = num;
+		t = len;
 		while (t != 0)
 		{
-			i = (cu + i) % num;
+			i = (cu + i) % len;
 			if (i == 0)
-				i = num;
+				i = len;
 			cu = number[i - 1];
 			if (cu == -1)
 				break;
