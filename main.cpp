@@ -31,19 +31,18 @@ vector<int> split_number_to_digits(int number)
 
 int main()
 {
-	int i = 0;
-	int n;
 	int j = 0;
 
 	while (1)
 	{
+		int n;
 		cin >> n;
 		if (n == 0)
 			break;
 
 		int len = length(n);
 		vector<int> number = split_number_to_digits(n);
-		i = 1;
+		int i = 1;
 		int cu = number[0];
 		int temp = cu;
 		number[0] = 0;
