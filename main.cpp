@@ -29,6 +29,16 @@ vector<int> split_number_to_digits(int number)
 	return result;
 }
 
+void print_result(int case_number, bool result)
+{
+	cout << "Case " << case_number << ": ";
+	if (result)
+		cout << "Yes";
+	else
+		cout << "No";
+	cout << endl;
+}
+
 int main()
 {
 	int j = 0;
@@ -58,11 +68,7 @@ int main()
 			number[i - 1] = -1;
 			t--;
 		}
-		cout << "Case " << j + 1 << ": ";
-		if (cu == 0)
-			cout << "Yes\n";
-		else if (cu == -1)
-			cout << "No\n";
+		print_result(j + 1, cu == 0);
 		j++;
 	}
 	return 0;
