@@ -8,18 +8,14 @@ int main()
 {
 	int i = 0;
 	int *n = (int *)malloc(sizeof(int));
+	int j = 0, c = 0;
+
 	while (1)
 	{
-		cin >> n[i];
-		if (n[i] == 0)
+		cin >> n[c];
+		if (n[c] == 0)
 			break;
-		i++;
-		n = (int *)realloc(n, (i + 1) * sizeof(int));
-	}
-	int c = i;
-	int j = 0;
-	while (c != 0)
-	{
+
 		int num;
 		for (i = 2; i <= 7; i++)
 		{
@@ -60,7 +56,9 @@ int main()
 		else if (cu == -1)
 			cout << "No\n";
 		j++;
-		c--;
+
+		c++;
+		n = (int *)realloc(n, (c + 1) * sizeof(int));
 	}
 	return 0;
 }
