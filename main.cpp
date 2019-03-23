@@ -28,23 +28,23 @@ vector<int> split_number_to_digits(int number)
 	return result;
 }
 
-bool is_circular(int n)
+bool is_circular(int number)
 {
-	int len = length(n);
-	vector<int> number = split_number_to_digits(n);
+	int len = length(number);
+	vector<int> number_digits = split_number_to_digits(number);
+	int cu = number_digits[0];
+	number_digits[0] = 0;
 	int i = 1;
-	int cu = number[0];
-	number[0] = 0;
 	int t = len;
 	while (t != 0)
 	{
 		i = (cu + i) % len;
 		if (i == 0)
 			i = len;
-		cu = number[i - 1];
+		cu = number_digits[i - 1];
 		if (cu == -1)
 			break;
-		number[i - 1] = -1;
+		number_digits[i - 1] = -1;
 		t--;
 	}
 	return cu == 0;
