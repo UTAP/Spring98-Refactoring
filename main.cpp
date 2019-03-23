@@ -51,8 +51,7 @@ bool is_circular(int number)
 	number_digits[0] = END;
 	int curr_index = 1;
 	int len = length(number);
-	int t = len;
-	while (t != 0)
+	for(int i = 0; i < len; i++)
 	{
 		curr_index = (cu + curr_index) % len;
 		if (curr_index == 0)
@@ -61,7 +60,6 @@ bool is_circular(int number)
 		if (cu == SEEN)
 			break;
 		number_digits[curr_index - 1] = SEEN;
-		t--;
 	}
 	return cu == END;
 }
