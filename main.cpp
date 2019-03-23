@@ -49,18 +49,18 @@ bool is_circular(int number)
 
 	int cu = number_digits[0];
 	number_digits[0] = END;
-	int i = 1;
+	int curr_index = 1;
 	int len = length(number);
 	int t = len;
 	while (t != 0)
 	{
-		i = (cu + i) % len;
-		if (i == 0)
-			i = len;
-		cu = number_digits[i - 1];
+		curr_index = (cu + curr_index) % len;
+		if (curr_index == 0)
+			curr_index = len;
+		cu = number_digits[curr_index - 1];
 		if (cu == SEEN)
 			break;
-		number_digits[i - 1] = SEEN;
+		number_digits[curr_index - 1] = SEEN;
 		t--;
 	}
 	return cu == END;
@@ -80,11 +80,11 @@ int main()
 {
 	for (int case_number = 1; ; case_number++)
 	{
-		int n;
-		cin >> n;
-		if (n == 0)
+		int input_number;
+		cin >> input_number;
+		if (input_number == 0)
 			break;
-		bool result = is_circular(n);
+		bool result = is_circular(input_number);
 		print_result(case_number, result);
 	}
 	return 0;
