@@ -28,10 +28,23 @@ vector<int> split_number_to_digits(int number)
 	return result;
 }
 
+bool has_invalid_digits(vector<int> number_digits)
+{
+	if (number_digits.size() > 9)
+		return true;
+	for (int i = 0; i < number_digits.size(); i++)
+		if (!number_digits[i])
+			return true;
+	return false;
+}
+
 bool is_circular(int number)
 {
 	int len = length(number);
 	vector<int> number_digits = split_number_to_digits(number);
+	if (has_invalid_digits(number_digits))
+		return false;
+
 	int cu = number_digits[0];
 	number_digits[0] = 0;
 	int i = 1;
