@@ -52,21 +52,21 @@ bool is_circular(int number)
 	if (has_invalid_digits(number_digits))
 		return false;
 
-	int cu = number_digits[0];
+	int curr_digit = number_digits[0];
 	number_digits[0] = END;
 	int curr_index = 1;
 	int len = length(number);
 	for(int i = 0; i < len; i++)
 	{
-		curr_index = (cu + curr_index) % len;
+		curr_index = (curr_digit + curr_index) % len;
 		if (curr_index == 0)
 			curr_index = len;
-		cu = number_digits[curr_index - 1];
-		if (cu == SEEN)
+		curr_digit = number_digits[curr_index - 1];
+		if (curr_digit == SEEN)
 			break;
 		number_digits[curr_index - 1] = SEEN;
 	}
-	return cu == END;
+	return curr_digit == END;
 }
 
 void print_result(int case_number, bool result)
