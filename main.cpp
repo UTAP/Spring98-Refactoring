@@ -5,6 +5,9 @@
 
 using namespace std;
 
+const int END = 0;
+const int SEEN = -1;
+
 int length(int n)
 {
 	for (int i = 0; ; i++)
@@ -40,14 +43,14 @@ bool has_invalid_digits(vector<int> number_digits)
 
 bool is_circular(int number)
 {
-	int len = length(number);
 	vector<int> number_digits = split_number_to_digits(number);
 	if (has_invalid_digits(number_digits))
 		return false;
 
 	int cu = number_digits[0];
-	number_digits[0] = 0;
+	number_digits[0] = END;
 	int i = 1;
+	int len = length(number);
 	int t = len;
 	while (t != 0)
 	{
@@ -55,12 +58,12 @@ bool is_circular(int number)
 		if (i == 0)
 			i = len;
 		cu = number_digits[i - 1];
-		if (cu == -1)
+		if (cu == SEEN)
 			break;
-		number_digits[i - 1] = -1;
+		number_digits[i - 1] = SEEN;
 		t--;
 	}
-	return cu == 0;
+	return cu == END;
 }
 
 void print_result(int case_number, bool result)
