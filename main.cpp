@@ -35,10 +35,15 @@ bool has_invalid_digits(vector<int> number_digits)
 {
 	if (number_digits.size() > 9)
 		return true;
-	for (int i = 0; i < number_digits.size(); i++)
-		if (!number_digits[i])
-			return true;
-	return false;
+	vector<bool> seen(9, false);
+    for(int i = 0; i < number_digits.size(); i++) {
+        if(!number_digits[i])
+            return true;
+        if(seen[number_digits[i] - 1])
+            return true;
+        seen[number_digits[i] - 1] = true;
+    }
+    return false;
 }
 
 bool is_circular(int number)
